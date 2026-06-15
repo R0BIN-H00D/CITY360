@@ -1,0 +1,33 @@
+{% extends 'commonbase.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- contact -->
+<section class="w3l-contact pb-5" id="contact">
+    <div class="container pb-md-5 pb-4">
+        <div class="row contact-block">
+            <div class="col-lg-7 contact-right mt-5">
+                <h3 class="title-style mb-4 pb-2">Login</h3>
+                <form  method="post" class="signin-form">
+                    {% csrf_token %}
+                    <div class="input-grids" style="margin-top: 10%;">
+                        <input type="email" name="Email" id="w3lSender" placeholder="Your Email*"
+                            class="contact-input" required="" />
+                        <input type="password" name="Password" id="w3lSubect" placeholder="Password*" class="contact-input"
+                            required="" />
+                    </div>
+                    <button class="btn btn-style mt-sm-3" style="margin-left: 80%;">Login</button>
+                </form>
+            </div>
+            <div class="col-lg-5 mt-lg-0 mt-5 pl-xl-5 pl-lg-4">
+                <div class="map-iframe" style="margin-top: 15%; width: 90%; margin-left: 4%;">
+                    <img class="img-fluid" src="{% static 'assets/images/login.png' %}" alt=" ">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //contact -->
+
+{% endblock %}

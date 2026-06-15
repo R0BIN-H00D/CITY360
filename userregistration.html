@@ -1,0 +1,119 @@
+{% extends 'commonbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    /* Image Upload */
+
+    .image-upload>input {
+        display: none;
+    }
+
+    #img {
+        cursor: pointer;
+        height: 150px;
+        width: 150px;
+        padding: 10px;
+        border-radius: 100px;
+    }
+
+    article,
+    aside,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+        display: block;
+    }
+
+    /* Image upload */
+</style>
+
+<!-- Registration -->
+<section class="w3l-contact pb-5" id="contact">
+    <div class="container pb-md-5 pb-4">
+        <div class="row contact-block">
+            <div class="col-lg-7 contact-right mt-5">
+                <h3 class="title-style mb-4 pb-2">User Registration</h3>
+
+                <form method="post" class="signin-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="image-upload text-center" style="margin-bottom:30px; margin-right: 500px;">
+                        <label for="file-input">
+                            <img id="img" src="/static/assets/image/up-arrows.png" alt="Upload Image"
+                                style="margin: auto; margin-right: 100%;" />
+                        </label>
+
+                        <p
+                            style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; margin-top: -2%; margin-left: -4%;">
+                            Upload Image</p>
+
+                        <input id="file-input" onchange="readURL(this)" name="image" type="file" />
+                    </div>
+                    <div class="input-grids">
+                        <input type="text" name="Name" id="w3lName" placeholder="Your Name*" class="contact-input"
+                            required="" />
+
+                        <input type="email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            id="w3lSender" placeholder="Your Email*" class="contact-input" required="" />
+
+                        <input type="password" name="Password"
+                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}" id="w3lSubect"
+                            placeholder="Password*" class="contact-input" required="" />
+
+                        <input type="text" name="Number" pattern="[9876][0-9]{9}" maxlength="10" id="w3lSubect"
+                            placeholder="Phone Number*" class="contact-input" required="" />
+
+                        <div id="selection">
+                            <select name="Gender" style="height: 50px;padding: 5px;
+                            width: 100%;
+                            color: var(--heading-color);
+                            background: var(--bg-grey);
+                            font-size: 15px;
+                            padding: 14px;
+                            border: 1px solid var(--border-color-light);
+                            outline: none;
+                            margin-bottom: 16px;
+                            border-radius: 8px;">
+                                <option value="" selected disabled>Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Male">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-input">
+                        <textarea name="Address" id="w3lMessage" placeholder="Type your address here*"
+                            required=""></textarea>
+                    </div>
+                    <button class="btn btn-style mt-sm-3" style="margin-left: 80%;">Submit</button>
+                </form>
+                
+            </div>
+            <div class="col-lg-5 mt-lg-0 mt-5 pl-xl-5 pl-lg-4">
+                <div class="map-iframe" style="margin-top: 83%; width: 100%; margin-left: 5%;">
+                    <img class="img-fluid" src="{% static 'assets/images/new.png' %}" alt=" ">
+                </div>
+            </div>
+        </div>
+</section>
+<!-- //Registration -->
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $("#img").attr("src", e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+
+{% endblock %}
